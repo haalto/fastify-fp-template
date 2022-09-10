@@ -1,8 +1,5 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
+import { pipe } from 'fp-ts/lib/function';
 
-export const checkHealth = async (
-  request: FastifyRequest,
-  reply: FastifyReply,
-) => {
-  reply.send({ status: 'OK' });
-};
+export const checkHealth = async (_: FastifyRequest, reply: FastifyReply) =>
+  pipe(reply.send({ status: 'OK' }));
