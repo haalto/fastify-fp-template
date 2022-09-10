@@ -1,0 +1,7 @@
+FROM node:16
+ENV NODE_ENV=test
+ENV DB_HOST=testdb
+WORKDIR /usr/src/app
+COPY package*.json .
+RUN npm install
+COPY . .

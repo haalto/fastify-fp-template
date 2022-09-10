@@ -1,0 +1,33 @@
+version: '3.9'
+
+services:
+  testdb:
+    image: postgres
+    ports:
+      - '5432'
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    networks:
+      - testapi
+  testrunner:
+    build:
+      context: ./
+      dockerfile: Dockerfile.test
+    ports:
+      - '5000'
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+    environment:
+      DB_HOST: testdb
+    depends_on:
+      - testdb
+    networks:
+      - testapi
+    entrypoint: ['/bin/sh', '-c']
+    command:
+      - ./wait-for-it.sh testdb:5432 -- ./test.sh
+networks:
+  testapi:
