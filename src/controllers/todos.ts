@@ -1,10 +1,7 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
 import { pipe } from 'fp-ts/lib/function';
 
-import {
-  CreateTodoBodySchema,
-  CreateTodoRequestSchema,
-} from '../schemas/todos';
+import { CreateTodoBodySchema } from '../schemas/todos';
 import { Todos } from '../services/todos';
 import * as TE from 'fp-ts/TaskEither';
 import { Static } from '@sinclair/typebox';

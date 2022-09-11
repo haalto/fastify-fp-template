@@ -1,5 +1,4 @@
 import { Type } from '@sinclair/typebox';
-import { optional } from 'io-ts/lib/DecodeError';
 
 export const TodoSchema = Type.Object({
   id: Type.Number(),
@@ -15,9 +14,5 @@ export const CreateTodoResponsesSchema = {
 
 export const CreateTodoBodySchema = Type.Object({
   title: Type.String(),
-  description: Type.String(),
+  description: Type.Optional(Type.String()),
 });
-
-export const CreateTodoRequestSchema = {
-  body: CreateTodoBodySchema,
-};

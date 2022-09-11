@@ -5,7 +5,7 @@ export const Todos = {
     const db = getDb();
     return db.todo.findMany();
   },
-  create: async (title: string, description: string) => {
+  create: async (title: string, description?: string) => {
     const db = getDb();
     return db.todo.create({
       data: {

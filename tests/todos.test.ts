@@ -52,6 +52,9 @@ describe('Todos CRUD operations', () => {
         title: 'Test todo',
       },
     });
+    expect(response.json()).toMatchObject({
+      title: 'Test todo',
+    });
     expect(response.statusCode).toBe(201);
     instance.close();
   });
