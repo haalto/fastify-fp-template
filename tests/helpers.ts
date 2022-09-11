@@ -1,13 +1,13 @@
 import { app } from '../src/app';
 
-export const build = () => {
-  const instance = app();
-  beforeAll(async () => {
-    await instance.ready();
+export const build = async () => {
+  const instance = await app();
+  beforeAll(() => {
+    instance.ready();
   });
 
-  afterAll(async () => {
-    await instance.close();
+  afterAll(() => {
+    instance.close();
   });
   return instance;
 };

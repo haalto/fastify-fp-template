@@ -17,11 +17,13 @@ services:
       dockerfile: Dockerfile.test
     ports:
       - '5000'
+    environment:
+      - PORT=5000
+      - HOST="0.0.0.0"
+      - DATABASE_URL=postgres://postgres:postgres@testdb:5432/postgres?schema=public
     volumes:
       - ./:/usr/src/app
       - /usr/src/app/node_modules
-    environment:
-      DB_HOST: testdb
     depends_on:
       - testdb
     networks:

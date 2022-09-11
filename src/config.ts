@@ -5,11 +5,10 @@ dotenv.config({ path: `${__dirname}/../.env` });
 
 const configDecoder = D.struct({
   PORT: withDefault(5000)(intDecoder),
-  HOST: withDefault('localhost')(D.string),
-  DB_HOST: withDefault('postgres')(D.string),
-  DB_PASSWORD: withDefault('postgres')(D.string),
-  DB_USER: withDefault('postgres')(D.string),
-  DB_NAME: withDefault('postgres')(D.string),
+  HOST: withDefault('0.0.0.0')(D.string),
+  DB_URL: withDefault(
+    'postgresql://postgresql:postgresql@localhost:5432/postgresql?schema=public',
+  )(D.string),
 });
 
 export type Config = D.TypeOf<typeof configDecoder>;

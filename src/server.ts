@@ -3,8 +3,8 @@ import { Config, config } from './config';
 import { pipe } from 'fp-ts/lib/function';
 import * as E from 'fp-ts/Either';
 
-const start = (config: Config) =>
-  pipe(app({ logger: true }), server =>
+const start = async (config: Config) =>
+  pipe(await app({ logger: true }), server =>
     server.listen({ host: config.HOST, port: config.PORT }, err => {
       if (err) {
         server.log.error(err);

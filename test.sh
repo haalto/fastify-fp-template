@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-npx jest --watchAll --detectOpenHandles
+npx prisma migrate reset --force --skip-generate && npx jest --watchAll --detectOpenHandles
